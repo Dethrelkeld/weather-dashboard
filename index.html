@@ -12,22 +12,54 @@
 </head>
 
 <body>
+    <!-- As a heading -->
+    <nav class="navbar  navbar-dark bg-dark">
+        <div class="container-fluid">
+            <span class="navbar-brand mb-0 h1">The Weather</span>
+        </div>
+    </nav>
     <!-- content container -->
     <div class="container">
         <div class="row">
             <!-- cities area -->
             <div class="col-md-4">
-            
+                <div class="row">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="City, State" aria-label="City, State" aria-describedby="button-addon2">
+                        <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
+                      </div>
+                </div>
+                <div class="row">
+                    <div class="card" style="width: 18rem;">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Cras justo odio</li>
+                            <li class="list-group-item">Dapibus ac facilisis in</li>
+                            <li class="list-group-item">Vestibulum at eros</li>
+                        </ul>
+                    </div>
+                </div>
+
             </div>
             <div class="col-md-8">
                 <div class="row">
-
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-header">
+                          Featured
+                        </div>
+                        <ul class="list-group list-group-flush">
+                          <li class="list-group-item">Cras justo odio</li>
+                          <li class="list-group-item">Dapibus ac facilisis in</li>
+                          <li class="list-group-item">Vestibulum at eros</li>
+                          <li class="list-group-item">Vestibulum at eros</li>
+                        </ul>
+                      </div>
                 </div>
                 <div class="row">
-
+                    
+                      
                 </div>
 
-            
+
             </div>
 
         </div>
@@ -36,6 +68,7 @@
     <!-- JQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.js"
         integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
 </body>
 
 </html>
