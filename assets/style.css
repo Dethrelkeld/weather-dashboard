@@ -1,3 +1,9 @@
 body {
     font-family: 'Baloo 2'
 }
+
+.row {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 30px;
+}
