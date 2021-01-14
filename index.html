@@ -20,27 +20,29 @@
 
 <body>
     <!-- As a heading -->
-    <nav class="navbar  navbar-dark bg-dark">
-        <div class="container-fluid">
-            <span class="navbar-brand mb-0 h1">The Weather</span>
-        </div>
-    </nav>
+    <header>
+        <h1>The Weather</h1>
+    </header>
+   
     <!-- content container -->
     <div class="container">
         <div class="row">
             
-            <!-- cities area -->
+            <!-- cities and search area -->
             <div class="col-md-4">
 
                 <!-- search input -->
                 <div class="row">
+                    <h4>Enter a city and state</h4>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="City, State" aria-label="City, State" aria-describedby="button-addon2">
-                        <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
+                        <input type="text" class="form-control" id="cityInput" placeholder="City, State" aria-label="City, State" aria-describedby="buttonSrch">
+                        <button class="btn btn-outline-secondary" type="button" id="buttonSrch">Search</button>
                       </div>
                 </div>
                 <!-- city selector -->
                 <div class="row">
+                    
+                    <h4>Or choose from below</h4>
                     <div class="card" style="width: 18rem;">
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">Cras justo odio</li>
