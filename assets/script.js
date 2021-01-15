@@ -53,7 +53,7 @@ $(document).ready(function () {
     }
     // api call to get forecast using data returned from previous api call
     function getForecast(lat, lon){
-        var forecastQueryURL = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude=minutely" + "&appid=" + APIKeyWeather;
+        var forecastQueryURL = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude=minutely&units=imperial" + "&appid=" + APIKeyWeather;
         $("#forecast").empty();
         $.ajax({
             url: forecastQueryURL,
@@ -61,18 +61,18 @@ $(document).ready(function () {
         }).then(function (response) {
             console.log(response);
 
-            for(var i = 1; i < 6; i++) {
+            for(var i = 1; i < 5; i++) {
                 console.log(response.daily[i])
                 var col = $("<div>").addClass("col-md-3")
                 var card = $("<div>").addClass("card");
                 var cardBody = $("<div>").addClass("card-body");
                 var cardTitle = $("<h4>").addClass("card-title").text(response.daily[i].dt);
-                var currTemp = $("<h5>").text("Current Temp " + response.daily[i].temp + " F");
+                var currTempMax = $("<h5>").text("High " + response.daily[i].temp.max + " F");
                 var currHumid = $("<h5>").text("Humidity " + response.daily[i].humidity + "%");
-                var currFeel = $("<h5>").text("Feels like " + response.daily[i].feels_like + " F");
+                var currTempMin = $("<h5>").text("Low " + response.daily[i].temp.min + " F");
     
         
-                $("#forecast").append(col.append(card.append(cardBody.append(cardTitle, currTemp, currFeel, currHumid))))
+                $("#forecast").append(col.append(card.append(cardBody.append(cardTitle, currTempMax, currTempMin, currHumid))))
             }
         });
     }
