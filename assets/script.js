@@ -1,13 +1,10 @@
 $(document).ready(function () {
-    // // for testing
-    // var lat = 33.441792;
-    // var lon = -94.037689;
-    // var part = "current"
+    
 
     var APIKeyWeather = "fccfd79af0d76ce3841c8154e44fca10";
-    
+    // Cities in favorites
     var cities = ["Austin", "Dallas", "San Antonio"]
-    
+    // for loop to call func to make cities 
     for(var i = 0; i < cities.length; i++) {
         createList(cities[i])
     }
@@ -16,6 +13,7 @@ $(document).ready(function () {
         var li = $("<li>").addClass("list-group-item").text(text)
         $("ul").append(li)
     }
+
 
 
 
@@ -31,7 +29,7 @@ $(document).ready(function () {
         }
 
     });
-
+    // api call to get weather for city input
     function searchWeather(cityName) {
         var currentQueryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=imperial&appid=" + APIKeyWeather;
         $("#current").empty();
@@ -50,7 +48,7 @@ $(document).ready(function () {
             $("#current").append(card.append(cardBody.append(cardTitle.append(icon))));
         });
     }
-
+    // api call to get forecast using data returned from previous api call
     function getForecast(lat, lon){
         var forecastQueryURL = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude=minutely" + "&appid=" + APIKeyWeather;
         $("#forecast").empty();
@@ -77,17 +75,7 @@ $(document).ready(function () {
     //     event.preventDefault();
     // });
 
-    // // call the API for current
 
-    //     // display the current weather 
-    //     function renderCurrent() {
-
-    //     };
-    //     renderCurrent();
-
-    // });
-
-    // // call API for five day forecast
 
 
 
