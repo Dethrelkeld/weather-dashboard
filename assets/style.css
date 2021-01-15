@@ -21,10 +21,12 @@ header {
 
 .card {
     background-color: rgb(190, 190, 190);
+    opacity: 60%;
 }
 
 .list-group-item {
     background-color: rgb(190, 190, 190);
+    opacity: 60%;
 }
 
 .row {

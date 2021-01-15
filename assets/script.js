@@ -60,7 +60,7 @@ $(document).ready(function () {
             method: "GET"
         }).then(function (response) {
             console.log(response);
-
+            // loop to create cards for forecasted days
             for(var i = 1; i < 5; i++) {
                 console.log(response.daily[i])
                 var col = $("<div>").addClass("col-md-3")
@@ -76,10 +76,7 @@ $(document).ready(function () {
             }
         });
     }
-    // when clicking one of the city buttons
-    // $("#buttonSrch").on("click", function (event) {
-    //     event.preventDefault();
-    // });
+    
 
 
 
