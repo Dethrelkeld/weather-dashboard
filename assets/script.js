@@ -42,10 +42,13 @@ $(document).ready(function () {
             getForecast(response.coord.lat, response.coord.lon);
             var card = $("<div>").addClass("card");
             var cardBody = $("<div>").addClass("card-body");
-            var cardTitle = $("<h3>").addClass("card-title").text(response.name);
+            var cardTitle = $("<h2>").addClass("card-title").text(response.name);
             var icon = $("<img>").attr("src", "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png")
-
-            $("#current").append(card.append(cardBody.append(cardTitle.append(icon))));
+            var currTemp = $("<h3>").text("Current Temp " + response.main.temp + " F");
+            var currHumid = $("<h3>").text("Humidity " + response.main.humidity + "%");
+            var currFeel = $("<h3>").text("Feels like " + response.main.feels_like + " F");
+            
+            $("#current").append(card.append(cardBody.append(cardTitle.append(icon, currTemp, currFeel, currHumid))));
         });
     }
     // api call to get forecast using data returned from previous api call
@@ -60,13 +63,16 @@ $(document).ready(function () {
 
             for(var i = 1; i < 6; i++) {
                 console.log(response.daily[i])
-                var col = $("<div>").addClass("col-md-2")
+                var col = $("<div>").addClass("col-md-3")
                 var card = $("<div>").addClass("card");
                 var cardBody = $("<div>").addClass("card-body");
-                var cardTitle = $("<h3>").addClass("card-title").text(response.daily[i].dt);
+                var cardTitle = $("<h4>").addClass("card-title").text(response.daily[i].dt);
+                var currTemp = $("<h5>").text("Current Temp " + response.daily[i].temp + " F");
+                var currHumid = $("<h5>").text("Humidity " + response.daily[i].humidity + "%");
+                var currFeel = $("<h5>").text("Feels like " + response.daily[i].feels_like + " F");
     
         
-                $("#forecast").append(col.append(card.append(cardBody.append(cardTitle))))
+                $("#forecast").append(col.append(card.append(cardBody.append(cardTitle, currTemp, currFeel, currHumid))))
             }
         });
     }
