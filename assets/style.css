@@ -20,13 +20,14 @@ header {
 
 
 .card {
-    background-color: rgb(190, 190, 190);
-    opacity: 60%;
+    background-color: rgb(190, 190, 190, .6);
+    
 }
 
 .list-group-item {
-    background-color: rgb(190, 190, 190);
-    opacity: 60%;
+    background-color: rgb(190, 190, 190, 0.6);
+    
+    
 }
 
 .row {
