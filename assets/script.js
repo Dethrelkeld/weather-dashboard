@@ -10,11 +10,11 @@ $(document).ready(function () {
     }
 
     function createList(text) {
-        var li = $("<li>").addClass("list-group-item").text(text)
-        $("ul").append(li)
+        var button = $("<button>").addClass("list-group-item").text(text)
+        $("ul").append(button)
     }
 
-
+    
 
 
     // when clicking the search button
@@ -22,12 +22,7 @@ $(document).ready(function () {
         event.preventDefault();
         var cityInput = $("#cityInput").val().trim();
         searchWeather(cityInput);
-        if(cities.indexOf(cityInput) === -1) {
-
-            cities.push(cityInput)
-            createList(cityInput)
-        }
-
+       
     });
     // api call to get weather for city input
     function searchWeather(cityName) {
@@ -47,6 +42,13 @@ $(document).ready(function () {
             var currTemp = $("<h3>").text("Current Temp " + response.main.temp + " F");
             var currHumid = $("<h3>").text("Humidity " + response.main.humidity + "%");
             var currFeel = $("<h3>").text("Feels like " + response.main.feels_like + " F");
+            
+            if(cities.indexOf(response.name) === -1) {
+
+                cities.push(response.name)
+                createList(response.name)
+            };
+    
             
             $("#current").append(card.append(cardBody.append(cardTitle.append(icon, currTemp, currFeel, currHumid))));
         });
