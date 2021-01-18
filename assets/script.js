@@ -1,11 +1,11 @@
 $(document).ready(function () {
-    
+
 
     var APIKeyWeather = "fccfd79af0d76ce3841c8154e44fca10";
     // Cities in favorites
     var cities = ["Austin", "Dallas", "San Antonio"]
     // for loop to call func to make cities 
-    for(var i = 0; i < cities.length; i++) {
+    for (var i = 0; i < cities.length; i++) {
         createList(cities[i])
     }
 
@@ -14,7 +14,7 @@ $(document).ready(function () {
         $("ul").append(button)
     }
 
-    
+
 
 
     // when clicking the search button
@@ -22,7 +22,7 @@ $(document).ready(function () {
         event.preventDefault();
         var cityInput = $("#cityInput").val().trim();
         searchWeather(cityInput);
-       
+
     });
     // api call to get weather for city input
     function searchWeather(cityName) {
@@ -31,7 +31,7 @@ $(document).ready(function () {
         $.ajax({
             url: currentQueryURL,
             method: "GET",
-            dataType:"json"
+            dataType: "json"
         }).then(function (response) {
             console.log(response);
             getForecast(response.coord.lat, response.coord.lon);
@@ -42,19 +42,19 @@ $(document).ready(function () {
             var currTemp = $("<h3>").text("Current Temp " + response.main.temp + " F");
             var currHumid = $("<h3>").text("Humidity " + response.main.humidity + "%");
             var currFeel = $("<h3>").text("Feels like " + response.main.feels_like + " F");
-            
-            if(cities.indexOf(response.name) === -1) {
+
+            if (cities.indexOf(response.name) === -1) {
 
                 cities.push(response.name)
                 createList(response.name)
             };
-    
-            
+
+
             $("#current").append(card.append(cardBody.append(cardTitle.append(icon, currTemp, currFeel, currHumid))));
         });
     }
     // api call to get forecast using data returned from previous api call
-    function getForecast(lat, lon){
+    function getForecast(lat, lon) {
         var forecastQueryURL = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude=minutely&units=imperial" + "&appid=" + APIKeyWeather;
         $("#forecast").empty();
         $.ajax({
@@ -63,22 +63,31 @@ $(document).ready(function () {
         }).then(function (response) {
             console.log(response);
             // loop to create cards for forecasted days
-            for(var i = 1; i < 5; i++) {
+            for (var i = 1; i < 5; i++) {
                 console.log(response.daily[i])
                 var col = $("<div>").addClass("col-md-3")
                 var card = $("<div>").addClass("card");
                 var cardBody = $("<div>").addClass("card-body");
-                var cardTitle = $("<h4>").addClass("card-title").text(response.daily[i].dt);
+                var cardTitle = $("<h4>").addClass("card-title").text(month + " " + day);
                 var currTempMax = $("<h5>").text("High " + response.daily[i].temp.max + " F");
                 var currHumid = $("<h5>").text("Humidity " + response.daily[i].humidity + "%");
                 var currTempMin = $("<h5>").text("Low " + response.daily[i].temp.min + " F");
-    
-        
+                // Months array
+                var months_arr = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+                // Convert timestamp to milliseconds
+                var date = new Date(response.daily[i].dt * 1000);
+                // Month
+                var month = months_arr[date.getMonth()];
+                // Day
+                var day = date.getDate();
+                
+
+
                 $("#forecast").append(col.append(card.append(cardBody.append(cardTitle, currTempMax, currTempMin, currHumid))))
             }
         });
     }
-    
+
 
 
 
