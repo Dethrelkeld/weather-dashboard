@@ -14,15 +14,15 @@ $(document).ready(function () {
         $("ul").append(button)
     }
 
-
-
-
+    
+    
+    
     // when clicking the search button
     $("#buttonSrch").on("click", function (event) {
         event.preventDefault();
         var cityInput = $("#cityInput").val().trim();
         searchWeather(cityInput);
-
+        
     });
     // api call to get weather for city input
     function searchWeather(cityName) {
@@ -38,18 +38,18 @@ $(document).ready(function () {
             var card = $("<div>").addClass("card");
             var cardBody = $("<div>").addClass("card-body");
             var cardTitle = $("<h2>").addClass("card-title").text(response.name);
-            var icon = $("<img>").attr("src", "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png")
+            var icon = $("<img>").attr("src", "https://openweathermap.org/img/w/" + response.weather[0].icon + ".png")
             var currTemp = $("<h3>").text("Current Temp " + response.main.temp + " F");
             var currHumid = $("<h3>").text("Humidity " + response.main.humidity + "%");
             var currFeel = $("<h3>").text("Feels like " + response.main.feels_like + " F");
-
+            
             if (cities.indexOf(response.name) === -1) {
-
+                
                 cities.push(response.name)
                 createList(response.name)
             };
-
-
+            
+            
             $("#current").append(card.append(cardBody.append(cardTitle.append(icon, currTemp, currFeel, currHumid))));
         });
     }
@@ -81,17 +81,23 @@ $(document).ready(function () {
                 // Day
                 var day = date.getDate();
                 
-
-
+                
+                
                 $("#forecast").append(col.append(card.append(cardBody.append(cardTitle, currTempMax, currTempMin, currHumid))))
             }
         });
+        // When clicking on favorites
+        $("button").on("click", function (event) {
+            // var favoriteCity = $(this).val();
+            // console.log(favoriteCity);
+    
+        });
     }
-
-
-
-
-
+    
+    
+    
+    
+    
 
 
 
