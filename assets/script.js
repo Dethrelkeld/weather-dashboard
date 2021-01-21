@@ -8,12 +8,12 @@ $(document).ready(function () {
     for (var i = 0; i < cities.length; i++) {
         createList(cities[i])
     }
-
+    
     function createList(text) {
         var button = $("<button>").addClass("list-group-item").text(text)
         $("ul").append(button)
     }
-
+    
     
     
     
@@ -23,6 +23,14 @@ $(document).ready(function () {
         var cityInput = $("#cityInput").val().trim();
         searchWeather(cityInput);
         
+    });
+    
+    // When clicking on favorites
+    $("button").on("click", function (event) {
+        event.preventDefault();
+        var favoriteCity = $(this).text();
+        searchWeather(favoriteCity);
+
     });
     // api call to get weather for city input
     function searchWeather(cityName) {
@@ -87,12 +95,6 @@ $(document).ready(function () {
                 
                 $("#forecast").append(col.append(card.append(cardBody.append(cardTitle, currTempMax, currTempMin, currHumid))))
             }
-        });
-        // When clicking on favorites
-        $("button").on("click", function (event) {
-            // var favoriteCity = $(this).val();
-            // console.log(favoriteCity);
-    
         });
     }
     
