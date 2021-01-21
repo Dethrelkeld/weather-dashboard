@@ -38,7 +38,7 @@ $(document).ready(function () {
             var card = $("<div>").addClass("card");
             var cardBody = $("<div>").addClass("card-body");
             var cardTitle = $("<h2>").addClass("card-title").text(response.name);
-            var icon = $("<img>").attr("src", "https://openweathermap.org/img/w/" + response.weather[0].icon + ".png")
+            var icon = $("<img>").attr("src", `https://openweathermap.org/img/w/${response.weather[0].icon}.png`)
             var currTemp = $("<h3>").text("Current Temp " + response.main.temp + " F");
             var currHumid = $("<h3>").text("Humidity " + response.main.humidity + "%");
             var currFeel = $("<h3>").text("Feels like " + response.main.feels_like + " F");
@@ -64,14 +64,6 @@ $(document).ready(function () {
             console.log(response);
             // loop to create cards for forecasted days
             for (var i = 1; i < 5; i++) {
-                console.log(response.daily[i])
-                var col = $("<div>").addClass("col-md-3")
-                var card = $("<div>").addClass("card");
-                var cardBody = $("<div>").addClass("card-body");
-                var cardTitle = $("<h4>").addClass("card-title").text(month + " " + day);
-                var currTempMax = $("<h5>").text("High " + response.daily[i].temp.max + " F");
-                var currHumid = $("<h5>").text("Humidity " + response.daily[i].humidity + "%");
-                var currTempMin = $("<h5>").text("Low " + response.daily[i].temp.min + " F");
                 // Months array
                 var months_arr = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
                 // Convert timestamp to milliseconds
@@ -80,6 +72,16 @@ $(document).ready(function () {
                 var month = months_arr[date.getMonth()];
                 // Day
                 var day = date.getDate();
+                console.log(response.daily[i])
+                var col = $("<div>").addClass("col-md-3")
+                var card = $("<div>").addClass("card");
+                var cardBody = $("<div>").addClass("card-body");
+                var cardTitle = $("<h4>").addClass("card-title").text(month + " " + day);
+                var currTempMax = $("<h5>").text("High " + response.daily[i].temp.max + " F");
+                var currHumid = $("<h5>").text("Humidity " + response.daily[i].humidity + "%");
+                var currTempMin = $("<h5>").text("Low " + response.daily[i].temp.min + " F");
+                
+
                 
                 
                 
