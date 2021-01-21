@@ -34,7 +34,7 @@ $(document).ready(function () {
     });
     // api call to get weather for city input
     function searchWeather(cityName) {
-        var currentQueryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=imperial&appid=" + APIKeyWeather;
+        var currentQueryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=imperial&appid=" + APIKeyWeather;
         $("#current").empty();
         $.ajax({
             url: currentQueryURL,
