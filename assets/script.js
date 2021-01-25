@@ -10,7 +10,7 @@ $(document).ready(function () {
     }
     
     function createList(text) {
-        var button = $("<button>").addClass("list-group-item").text(text)
+        var button = $("<button>").addClass("list-group-item").text(text);
         $("ul").append(button)
     }
     
@@ -47,7 +47,7 @@ $(document).ready(function () {
             var cardBody = $("<div>").addClass("card-body");
             var cardTitle = $("<h2>").addClass("card-title").text(response.name);
             var icon = $("<img>").attr("src", `https://openweathermap.org/img/w/${response.weather[0].icon}.png`)
-            var currTemp = $("<h3>").text("Current Temp " + response.main.temp + " F");
+            var currTemp = $("<h3>").text("Current Temp " + Math.round(response.main.temp) + " F");
             var currHumid = $("<h3>").text("Humidity " + response.main.humidity + "%");
             var currFeel = $("<h3>").text("Feels like " + response.main.feels_like + " F");
             
