@@ -1,4 +1,4 @@
-# weather-dashboard
+# Weather Dashboard
  https://dethrelkeld.github.io/weather-dashboard/
  
  ---
